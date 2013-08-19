@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+	<g transform="translate(-348.7552,-478.0905)">
+		<path
+			style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#FFF;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+			d="M 368.54632,484.01327 L 368.54632,513.01327"/>
+		<path
+			style="opacity:1;color:#FFF;fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#FFF;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible"
+			d="M 363.65347,488.76327 L 375.65347,488.76327"/>
+		<path
+			style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#FFF;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+			d="M 382.54632,519.01327 C 381.54632,520.01327 380.54632,521.01327 379.54632,521.01327 C 378.54632,521.01327 376.54632,520.01327 376.54632,518.01327 C 376.54632,516.01327 377.54632,514.01327 379.54632,512.01327 C 381.54632,510.01327 383.54632,506.01327 383.54632,502.01327 C 383.54632,498.01327 381.54632,494.01327 377.54632,494.01327 C 373.76313,494.01327 370.54632,496.01327 368.54632,500.01327"/>
+	</g>
+</svg>

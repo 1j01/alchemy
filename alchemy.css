@@ -1,0 +1,129 @@
+
+@font-face {
+	font-family: 'junicode';
+	src: url('http://1j01.kd.io/pasta/junicode/Junicode.woff') format('woff');
+}
+* {
+	font-family: 'junicode';
+	transition: all .2s ease-in-out;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+#inventorycontainer {
+	float: right;
+	width: 40%;
+	background: #444;
+}
+#inventory {}
+#market * {
+	padding: 5px;
+}
+
+.item {
+	background: #333;
+	margin: 4px;
+	border-radius: 5px;
+}
+.item:not(.active):hover {
+	cursor: pointer;
+	background: #222;
+}
+.item:active, .item.active {
+	background: #111;
+}
+.item:not(.active) .wanna-buy {
+	display: none;
+}
+.unaffordable.item .can-afford {
+	display: none;
+}
+.affordable.item .too-expensive {
+	display: none;
+}
+
+.wanna-buy {
+	float: right;
+}
+.too-expensive {
+	color: red;
+}
+.unaffordable.item .mprice {
+	color: red;
+}
+
+.item button {
+	border-radius: 5px;
+	opacity: 0.8;
+}
+.buy {
+	background: #5F5;
+	color: #000;
+}
+.cancel {
+	background: ltgray;
+	color: #000;
+}
+
+@keyframes crypt {
+	0%  {transform:rotate(0deg);}
+	10% {transform:rotate(0deg);}
+	40% {transform:rotate(90deg);}
+	100%{transform:rotate(270deg);}
+}
+@-webkit-keyframes wkcrypt {
+	0%  {transform:rotate(0deg);}
+	10% {transform:rotate(0deg);}
+	40% {transform:rotate(90deg);}
+	100%{transform:rotate(270deg);}
+}
+.symbol {
+	float: left;
+	font-size: 3em;
+	font-weight: 100;
+	width: 1.2em;
+	height: 1.2em;
+	text-align: center;
+	vertical-align: middle;
+}
+.symbol img {
+	width: 1em;
+	height: 1em;
+}
+
+.substance-name {
+	font-variant: small-caps;
+	font-size: 1.3em;
+}
+.tgeneric {
+	padding: 0;
+}
+
+.mtype {
+	font-size: 0.8em;
+	color: #999;
+	padding: 0;
+	float: right;
+	display: none;
+}
+.mprice {
+	font-size: 0.99em;
+	color: #FFA;
+}
+.quantity {
+	padding: 0;
+}
+
+.raw {
+	font-family: monospace;
+	font-size: 0.9em;
+	display: inline-block;
+}
+.raw summary {
+	color: #AAA;
+}
+summary {
+	cursor: pointer;
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50">
+  <g transform="translate(-348.7552,-478.0905)">
+    <path
+       style="fill:none;stroke:#FFF;stroke-width:3"
+       d="M 382.83736,486.87888 L 382.83736,519.93338"/>
+    <path
+      style="fill:none;stroke:#FFF;stroke-width:3"
+        d="M 388.2865,511.45787 L 361.949,511.45787"/>
+    <path
+       style="fill:none;stroke:#FFF;stroke-width:3"
+       d="M 364.67357,498.7446 C 363.76538,498.7446 361.949,497.89705 361.949,494.50684 C 361.949,491.11663 365.58176,487.72643 369.21452,487.72643 C 372.84728,487.72643 376.48003,490.26908 376.48003,496.20194 C 376.48003,502.1348 371.93909,511.45787 362.85719,511.45787"/>
+  </g>
+</svg>
