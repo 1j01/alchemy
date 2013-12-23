@@ -26,14 +26,16 @@ function ItemView(item, inMarket){
 			I.$symbol.style.webkitFilter = 
 			I.$symbol.style.mozFilter = 
 			I.$symbol.style.filter = 
-				"drop-shadow(0em 0em 0.1em "+item.color+")";
+				"drop-shadow(0em 0em 0.5em "+item.color+")";
 		};
 		I.$symbol.onmouseout = function(){
 			I.$symbol.style.webkitFilter = 
 			I.$symbol.style.mozFilter = 
 			I.$symbol.style.filter = 
-				"drop-shadow(0em 0em 0.1em rgba(255,255,255,1))";
+				"drop-shadow(0em 0em 0.1em "+item.color+")";
+			//	"drop-shadow(0em 0em 0.1em rgba(255,255,255,1))";
 		};
+		I.$symbol.onmouseout();
 	}
 	
 	I.$item.appendChild(I.$tgeneric);
@@ -171,20 +173,22 @@ function MachineVi(o){//{name, description, takes, callback}
 	
 	if(o)for(p in o)this[p]=o[p];
 }
+
+//this isn't used
 function Input(o){//{x!, y!, name, description, takes, callback}
 	this.$input = document.createElement("div");
 	this.$input.className = "input";
 	this.$input.style.position = "absolute";
-	this.$input.style.left = x;
-	this.$input.style.top = y;
+	this.$input.style.left = x+"px";
+	this.$input.style.top = y+"px";
 	
-	if(o)for(p in o)this[p]=o[p];
+	if(o)for(var p in o)this[p]=o[p];
 }
 var supports = {
 	svg: document.createElementNS && document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGRect,
 };
+var money = 10;
 (function(){
-	var money = 10;
 	var symbol = function(name, fallback){
 		if(supports.svg) return "<img src='symbols/"+name+".svg' alt='"+fallback+"'>";
 		return fallback;
