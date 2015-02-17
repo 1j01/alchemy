@@ -1,10 +1,12 @@
 
 @font-face {
-	font-family: 'junicode';
-	src: url('http://1j01.kd.io/pasta/junicode/Junicode.woff') format('woff');
+	font-family: 'Junicode';
+	src:
+		url('fonts/Junicode.woff') format('woff'),
+		url('fonts/Junicode.ttf') format('truetype');
 }
 * {
-	font-family: 'junicode';
+	font-family: 'Junicode';
 	transition: all .2s ease-in-out;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -127,3 +129,4 @@
 summary {
 	cursor: pointer;
 }
+
