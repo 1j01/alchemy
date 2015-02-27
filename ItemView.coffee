@@ -1,6 +1,6 @@
 
 class @ItemView
-	constructor: (item, inMarket)->
+	constructor: (item, listView)->
 		I = @
 		I.item = item
 		I.$item = document.createElement("div")
@@ -28,10 +28,10 @@ class @ItemView
 		I.$item.appendChild(I.$header)
 		I.$item.appendChild(I.$tspecific)
 		
-		I.update = ->
+		do I.update = ->
 			I.$header.innerHTML = "
-				<span class='mtype'>#{item.mtype}]</span>
-				#{if inMarket then """
+				<span class='type'>#{item.type}]</span>
+				#{if listView instanceof Market then """
 					<div class='wanna-buy'>
 						<span class='too-expensive'>Not enough money</span>
 						<button class='buy'>Buy</button>
@@ -39,33 +39,12 @@ class @ItemView
 				""" else ""}
 				<span class='substance-name'>#{item.name}</span>
 				#{if item.quantity > 1 then "<span class='quantity'> × #{item.quantity}</span>" else ""}
-				<span class='mprice'>#{item.value}ƒ</span>
+				<span class='price'>#{item.value}ƒ</span>
 			"
 			
 			$buy = I.$header.querySelector("button.buy")
-			if $buy
-				$buy.onclick = (e)->
-					if money >= item.value
-						money -= item.value
-						if item.mtype is "special"
-							market.remove item
-						if item.onBuy
-							item.onBuy()
-						else
-							# wow, this is awkward (@FIXME?)
-							# an ItemView creating an ItemView
-							iv = new ItemView(item)
-							$inventory.appendChild(iv.$item)
-							#inventory.push(iv)
-			
-			$cancel = I.$header.querySelector("button.cancel")
-			if $cancel
-				$cancel.onclick = (e)->
-					I.$item.classList.remove("active")
-			
+			$buy?.onclick = -> buy item
 			
 			I.$tspecific.innerHTML = item.description
 			#try I.$tspecific.innerHTML += " <details class='raw'><summary>JSON</summary>#{JSON.stringify(item)}</details>"
-			
 		
-		I.update()

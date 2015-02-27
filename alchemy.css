@@ -53,7 +53,7 @@
 	opacity: 0.4;
 	text-shadow: 1px 1px 1px black;
 }
-.cannot-afford .mprice {
+.cannot-afford .price {
 	color: red;
 }
 
@@ -104,14 +104,14 @@
 	padding: 0;
 }
 
-.mtype {
+.type {
 	font-size: 0.8em;
 	color: #999;
 	padding: 0;
 	float: right;
 	display: none;
 }
-.mprice {
+.price {
 	font-size: 0.99em;
 	color: #FFA;
 }

@@ -14,7 +14,7 @@ class @Substance
 		
 		@color = "#aaa"
 		
-		@mtype = "substance"
+		@type = "substance"
 		@value = 14
 		@quantity = 1
 		

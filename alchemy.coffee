@@ -35,22 +35,19 @@ Input = ({x, y, name, description, takes, callback})->
 ###
 
 @money = 10
-@inventory = {}
+@inventory = new ItemListView($inventory)
 @machines = {}
 axeQuality = 1
 
-@addToInventory = (item)->
-	console.log "addToInventory", item
-	iv = inventory[item.name]
-	if iv
-		value_per_unit = iv.item.value / iv.item.quantity
-		iv.item.quantity += 1
-		iv.item.value = value_per_unit * iv.item.quantity
-		iv.update()
-	else
-		iv = new ItemView(item)
-		inventory[item.name] = iv
-		$inventory.appendChild(iv.$item)
+@buy = (item)->
+	if money >= item.value
+		money -= item.value
+		if item.type is "special"
+			market.remove item
+		if item.onBuy
+			item.onBuy()
+		else
+			inventory.add item
 
 @unlockAxe = ->
 	axeQuality = 3
@@ -62,7 +59,7 @@ axeQuality = 1
 	$button.innerText = "Fetch Water"
 	$button.onclick = ->
 		alert "impure water GET"
-		addToInventory new Substance
+		inventory.add new Substance
 			name: "Impure Water"
 			symbol: symbol("impure-water","⍫"),
 			description: "This water is impure. Where'd you get it, anyway? A river?"
@@ -90,7 +87,7 @@ axeQuality = 1
 		if counter > 20
 			counter = 0
 			new Floaty("WOOD GET!","rgba(255,255,255,1)",x,y,$button)
-			addToInventory new Substance
+			inventory.add new Substance
 				name: "Wood"
 				description: "wood of tree"
 				symbol: symbol("wood","W")
@@ -108,10 +105,10 @@ axeQuality = 1
 	
 	document.body.appendChild($button)
 
-addToInventory
+inventory.add
 	name: "Fists of Herobrine"
 	description: "A fairly decent axe stand-in."
-	mtype: "special"
+	type: "special"
 	value: 0
 
 unlockForest()
