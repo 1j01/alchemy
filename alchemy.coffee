@@ -116,14 +116,15 @@ addToInventory
 
 unlockForest()
 
+# why are you--ugh @FIXME
 setInterval ->
 	$money.innerText = money
 	for item in market.items
 		if item.value <= money
-			item.view.$item.classList.add("affordable")
-			item.view.$item.classList.remove("unaffordable")
+			item.view.$item.classList.add("can-afford")
+			item.view.$item.classList.remove("cannot-afford")
 		else
-			item.view.$item.classList.remove("affordable")
-			item.view.$item.classList.add("unaffordable")
+			item.view.$item.classList.remove("can-afford")
+			item.view.$item.classList.add("cannot-afford")
 , 10
 

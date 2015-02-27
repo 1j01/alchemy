@@ -29,20 +29,19 @@
 	margin: 4px;
 	border-radius: 5px;
 }
-.item:not(.active):hover {
+/*
+.item:hover {
 	cursor: pointer;
-	background: #222;
+	background: #444;
 }
-.item:active, .item.active {
+.item:active {
 	background: #111;
 }
-.item:not(.active) .wanna-buy {
-	display: none;
+*/
+.cannot-afford .buy {
+	opacity: 0.1;
 }
-.unaffordable.item .can-afford {
-	display: none;
-}
-.affordable.item .too-expensive {
+.can-afford .too-expensive {
 	display: none;
 }
 
@@ -51,8 +50,10 @@
 }
 .too-expensive {
 	color: red;
+	opacity: 0.4;
+	text-shadow: 1px 1px 1px black;
 }
-.unaffordable.item .mprice {
+.cannot-afford .mprice {
 	color: red;
 }
 
@@ -70,16 +71,16 @@
 }
 
 @keyframes crypt {
-	0%  {transform:rotate(0deg);}
-	10% {transform:rotate(0deg);}
-	40% {transform:rotate(90deg);}
-	100%{transform:rotate(270deg);}
+	  0% { transform: rotate(0turn); }
+	 10% { transform: rotate(0turn); }
+	 40% { transform: rotate(0.25turn); }
+	100% { transform: rotate(0.75turn); }
 }
 @-webkit-keyframes wkcrypt {
-	0%  {transform:rotate(0deg);}
-	10% {transform:rotate(0deg);}
-	40% {transform:rotate(90deg);}
-	100%{transform:rotate(270deg);}
+	  0% { transform: rotate(0turn); }
+	 10% { transform: rotate(0turn); }
+	 40% { transform: rotate(0.25turn); }
+	100% { transform: rotate(0.75turn); }
 }
 .symbol {
 	float: left;

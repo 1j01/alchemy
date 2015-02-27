@@ -4,43 +4,37 @@ class @ItemView
 		I = @
 		I.item = item
 		I.$item = document.createElement("div")
-		I.$tgeneric = document.createElement("div")
+		I.$header = document.createElement("div")
 		I.$tspecific = document.createElement("div")
 		I.$item.className = "item"
 		I.$tspecific.className = "tspecific"
-		I.$tgeneric.className = "tgeneric"
+		I.$header.className = "header"
 		
 		if item.symbol
 			I.$symbol = document.createElement("div")
 			I.$item.appendChild(I.$symbol)
 			I.$symbol.className = "symbol"
 			I.$symbol.innerHTML = item.symbol
-			I.$symbol.onmouseover = ->
+			
+			effect = (dist)->
 				I.$symbol.style.webkitFilter = 
 				I.$symbol.style.mozFilter = 
 				I.$symbol.style.filter = 
-					"drop-shadow(0em 0em 0.5em #{item.color})"
+					"drop-shadow(0 0 #{dist}em #{item.color})"
 			
-			I.$symbol.onmouseout = ->
-				I.$symbol.style.webkitFilter = 
-				I.$symbol.style.mozFilter = 
-				I.$symbol.style.filter = 
-					"drop-shadow(0em 0em 0.1em #{item.color})"
-				#	"drop-shadow(0em 0em 0.1em rgba(255,255,255,1))"
-			
-			I.$symbol.onmouseout()
+			I.$symbol.onmouseenter = -> effect 0.5
+			do I.$symbol.onmouseleave = -> effect 0.1
 		
-		
-		I.$item.appendChild(I.$tgeneric)
+		I.$item.appendChild(I.$header)
 		I.$item.appendChild(I.$tspecific)
 		
 		I.update = ->
-			I.$tgeneric.innerHTML = "
+			I.$header.innerHTML = "
 				<span class='mtype'>#{item.mtype}]</span>
 				#{if inMarket then """
 					<div class='wanna-buy'>
-						<div class='too-expensive'>You don't have enough money!</div>
-						<div class='can-afford'><button class='buy'>Buy</button><button class='cancel'>Cancel</button></div>
+						<span class='too-expensive'>Not enough money</span>
+						<button class='buy'>Buy</button>
 					</div>
 				""" else ""}
 				<span class='substance-name'>#{item.name}</span>
@@ -48,8 +42,7 @@ class @ItemView
 				<span class='mprice'>#{item.value}ƒ</span>
 			"
 			
-			
-			$buy = I.$tgeneric.querySelector("button.buy")
+			$buy = I.$header.querySelector("button.buy")
 			if $buy
 				$buy.onclick = (e)->
 					if money >= item.value
@@ -59,28 +52,20 @@ class @ItemView
 						if item.onBuy
 							item.onBuy()
 						else
-							# wow, this is awkward (@FIXME)
+							# wow, this is awkward (@FIXME?)
 							# an ItemView creating an ItemView
 							iv = new ItemView(item)
 							$inventory.appendChild(iv.$item)
 							#inventory.push(iv)
 			
-			$cancel = I.$tgeneric.querySelector("button.cancel")
+			$cancel = I.$header.querySelector("button.cancel")
 			if $cancel
 				$cancel.onclick = (e)->
 					I.$item.classList.remove("active")
 			
 			
-			I.$item.onclick = ->
-				if inMarket
-					window.__activeItemView?.$item.classList.remove("active")
-					window.__activeItemView = I
-					window.__activeItemView.$item.classList.add("active")
-				else
-					alert "that is an item"
-			
 			I.$tspecific.innerHTML = item.description
-			try I.$tspecific.innerHTML += " <details class='raw'><summary>JSON</summary>#{JSON.stringify(item)}</details>"
+			#try I.$tspecific.innerHTML += " <details class='raw'><summary>JSON</summary>#{JSON.stringify(item)}</details>"
 			
 		
 		I.update()
