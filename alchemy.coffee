@@ -39,15 +39,23 @@ Input = ({x, y, name, description, takes, callback})->
 @machines = {}
 axeQuality = 1
 
+do update = ->
+	item.update?() for item in market?.items ? []
+	$money.innerText = money
+
 @buy = (item)->
 	if money >= item.value
 		money -= item.value
+		
 		if item.type is "special"
 			market.remove item
+		
 		if item.onBuy
 			item.onBuy()
 		else
 			inventory.add item
+		
+		update()
 
 @unlockAxe = ->
 	axeQuality = 3
@@ -112,16 +120,4 @@ inventory.add
 	value: 0
 
 unlockForest()
-
-# why are you--ugh @FIXME
-setInterval ->
-	$money.innerText = money
-	for item in market.items
-		if item.value <= money
-			item.view.$item.classList.add("can-afford")
-			item.view.$item.classList.remove("cannot-afford")
-		else
-			item.view.$item.classList.remove("can-afford")
-			item.view.$item.classList.add("cannot-afford")
-, 10
 

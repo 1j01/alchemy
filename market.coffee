@@ -1,6 +1,4 @@
 
-class @Market extends ItemListView
-
 @market = new Market($market)
 
 market.add [

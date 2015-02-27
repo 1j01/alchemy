@@ -32,3 +32,8 @@ class @ItemListView
 			iv = new ItemView(item, @)
 			@element.appendChild(iv.$item)
 			item.view = iv
+
+
+class @Market extends ItemListView
+
+
