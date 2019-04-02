@@ -46,7 +46,6 @@ class @ItemView
 			if inMarket
 				$buy = iv.$header.querySelector("button.buy")
 				$buy.onclick = -> buy item
-				console.log money
 				if money >= item.value
 					iv.$item.classList.add("can-afford")
 					iv.$item.classList.remove("cannot-afford")
